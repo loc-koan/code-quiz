@@ -6,8 +6,50 @@
 
 body {
     display: flex; /* easier to use than float or positioning */
-    padding: 0;
-    margin: 0;
+    padding: 10;
+    margin: 10;
+    width: 100vw;
+    height: 100vh;
     justify-content: center;
     align-items: center;
+    background-color: black;
+}
+
+.container {
+    display: flex;
+    grid-template-columns: repeat(1, auto);
+    padding: 10;
+    margin: 10;
+    width: 50vw;
+    height: 50vh;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+.movement {
+    display: flex;
+    grid-template-columns: repeat(1, auto);
+    grid-gap: 10px;
+    gap: 10px;
+    padding: 10;
+    margin: 10;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+.btn-grid {
+    display: grid;
+    grid-template-columns: repeat(1, auto);
+    grid-gap: 10px;
+    padding: 10;
+    margin: 10;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+.hide {
+    display: none;
 }
