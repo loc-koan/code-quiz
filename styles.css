@@ -5,6 +5,7 @@
 }
 
 body {
+    display: flex; /* easier to use than float or positioning */
     padding: 0;
     margin: 0;
     justify-content: center;
