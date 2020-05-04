@@ -119,3 +119,15 @@ const questions = [
         ]
     } 
 ]
+
+/* // using this to store questions data...
+console.log(user);
+localStorage.setItem('user', JSON.stringify(user));
+
+var lastUser = JSON.parse(localStorage.getItem('user'));
+console.log(lastUser);
+userFirstNameSpan.textContent = lastUser.firstName;
+userLastNameSpan.textContent = lastUser.lastName;
+userEmailSpan.textContent = lastUser.email;
+userPasswordSpan.textContent = lastUser.password;
+*/ 
