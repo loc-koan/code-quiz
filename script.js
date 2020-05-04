@@ -1,18 +1,28 @@
 let beginButton = document.getElementById("begin-button");
-let questionSection = document.getElementById("question-section")
+let questionSection = document.getElementById("question-section");
+let questionElement = document.getElementById("question");
+let answerButtonsElement = document.getElementById("answer-buttons");
+
+let randomPickOfQuestion, beginQuestioning/* selects randomly one of the array questions */
 
 beginButton.addEventListener("click", beginGame);
 
 function beginGame() {
     console.log("beginButton") /* confirms game begins */
     beginButton.classList.add("hide"); /* removes begin button */
-    questionSection.classList.remove("hide"); /* brings questions */
-    setNextQuestion
+    questionSection.classList.remove("hide"); /* displays questions */
+    randomPickOfQuestion = questions.sort(() => Math.random() - .5); 
+    beginQuestioning = 0 /* starting questions */
+    setNextQuestion()
 }
 
 function setNextQuestion() {
-
+    pullQuestion(randomPickOfQuestion[beginQuestioning])
 }
+
+function pullQuestion(question) { 
+    questionElement.innerText = question.question
+} 
 
 function selectAnswer() {
 
@@ -26,7 +36,7 @@ const questions = [
             { text: "Peter Winston", correct: false },
             { text: "Michelle Bury", correct: false }
         ]
-    },
+    } /*,
     {question: "In coding, HTML stands for?",
         answers: [
             { text: "Hamburger, Tomato, Mayo, and Lettuce", correct: false },
@@ -58,5 +68,5 @@ const questions = [
             { text: "Not important", correct: false },
             { text: "Something you can eat", correct: false }
         ]
-    }
+    } */
 ]
