@@ -7,7 +7,12 @@ let nextButton = document.getElementById("next-button");
 let randomPickOfQuestion; /* selects randomly one of the array questions */
 let beginQuestioning;
 
-beginButton.addEventListener("click", beginGame);
+var startTimer = document.getElementById("timerSlot"); /* beginTimer or startTimer */
+var interval;
+
+beginButton.addEventListener("click", beginGame); /* starts the quiz */
+// beginTimer.addEventListener("click", startTimer); /* starts the timer */
+
 nextButton.addEventListener("click", () => {
     beginQuestioning++;
     setNextQuestion();
@@ -20,11 +25,31 @@ function beginGame() {
     randomPickOfQuestion = questions.sort(() => Math.random() - .5); 
     beginQuestioning = 0 /* starting questions */
     setNextQuestion();
+    // startTimer(); /* starts the timer */
 }
 
 function setNextQuestion() {
     cleanButton();
     pullQuestion(randomPickOfQuestion[beginQuestioning]);
+}
+
+/* this breaks everything... */
+function startTimer() { 
+    setTime();
+    if(totalSeconds > 0) {
+        interval = setInterval(function() {
+            secondsElapsed++;
+            renderTime();
+        }, 1000);
+    } else {
+        alert("time is up");
+    }
+}
+
+function setTime() {
+    var minutes;
+    clearInterval(interval);
+    totalSeconds = minutes * 60;
 }
 
 function pullQuestion(question) { /* insert test question */
@@ -58,7 +83,7 @@ function selectAnswer(e) {
     if (randomPickOfQuestion.length > beginQuestioning + 1) {
         nextButton.classList.remove("hide");
     } else {
-        beginButton.innerText = "Restart";
+        beginButton.innerText = "Restart Quiz";
         beginButton.classList.remove("hide");
     }
 }
@@ -120,14 +145,16 @@ const questions = [
     } 
 ]
 
-/* // using this to store questions data...
-console.log(user);
-localStorage.setItem('user', JSON.stringify(user));
+/* 
+// using this to store questions data...
+console.log(xxxxx);
+localStorage.setItem('xxxxx', JSON.stringify(xxxxx));
 
-var lastUser = JSON.parse(localStorage.getItem('user'));
-console.log(lastUser);
-userFirstNameSpan.textContent = lastUser.firstName;
-userLastNameSpan.textContent = lastUser.lastName;
-userEmailSpan.textContent = lastUser.email;
-userPasswordSpan.textContent = lastUser.password;
+var lastxxxxx = JSON.parse(localStorage.getItem('xxxxx'));
+console.log(lastxxxxx);
+xxxxxQuestion1.textContent = lastxxxxx.Question1Answer;
+xxxxxQuestion2.textContent = lastxxxxx.Question2Answer;
+xxxxxQuestion3.textContent = lastxxxxx.Question3Answer;
+xxxxxQuestion4.textContent = lastxxxxx.Question4Answer;
+xxxxxQuestion5.textContent = lastxxxxx.Question5Answer;
 */ 

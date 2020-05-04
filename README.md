@@ -45,6 +45,7 @@ You are required to submit the following for review:
 © 2019 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
 
 # References:
+https://www.sitepoint.com/build-javascript-countdown-timer-no-dependencies/ 
 https://www.youtube.com/watch?v=Az5J_EkhYCY
 https://www.youtube.com/watch?v=u_6CqjQ-L8Q 
 https://www.youtube.com/watch?v=LQGTb112N_c 
