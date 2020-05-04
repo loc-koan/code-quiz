@@ -11,7 +11,7 @@ var startTimer = document.getElementById("timerSlot"); /* beginTimer or startTim
 var interval;
 
 beginButton.addEventListener("click", beginGame); /* starts the quiz */
-// beginTimer.addEventListener("click", startTimer); /* starts the timer */
+// startTimer.addEventListener("click", startTimer); /* starts the timer */
 
 nextButton.addEventListener("click", () => {
     beginQuestioning++;
@@ -25,7 +25,7 @@ function beginGame() {
     randomPickOfQuestion = questions.sort(() => Math.random() - .5); 
     beginQuestioning = 0 /* starting questions */
     setNextQuestion();
-    // startTimer(); /* starts the timer */
+    startTimer(); /* starts the timer */
 }
 
 function setNextQuestion() {
@@ -33,12 +33,12 @@ function setNextQuestion() {
     pullQuestion(randomPickOfQuestion[beginQuestioning]);
 }
 
-/* this breaks everything... */
+/* im out of time, to figure out how to adjust this time... */
 function startTimer() { 
     setTime();
     if(totalSeconds > 0) {
         interval = setInterval(function() {
-            secondsElapsed++;
+            secondsElapsed--;
             renderTime();
         }, 1000);
     } else {
@@ -49,8 +49,30 @@ function startTimer() {
 function setTime() {
     var minutes;
     clearInterval(interval);
-    totalSeconds = minutes * 60;
+    totalSeconds = 10;
 }
+
+function renderTime() {
+    secondsDisplay.textContent = getFormattedSeconds();
+    stopTimer();
+}
+
+function stopTimer() {
+    secondsElapsed = 0;
+    setTime();
+    renderTime();
+}
+
+function getFormattedSeconds() {
+    var secondsLeft = (totalSeconds - secondsElapsed) % 60;
+    var formattedSeconds;
+    if (secondsLeft < 10) {
+      formattedSeconds = "0" + secondsLeft;
+    } else {
+      formattedSeconds = secondsLeft;
+    }
+    return formattedSeconds;
+  }
 
 function pullQuestion(question) { /* insert test question */
     questionElement.innerText = question.question;
