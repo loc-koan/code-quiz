@@ -2,30 +2,79 @@ let beginButton = document.getElementById("begin-button");
 let questionSection = document.getElementById("question-section");
 let questionElement = document.getElementById("question");
 let answerButtonsElement = document.getElementById("answer-buttons");
+let nextButton = document.getElementById("next-button");
 
-let randomPickOfQuestion, beginQuestioning/* selects randomly one of the array questions */
+let randomPickOfQuestion; /* selects randomly one of the array questions */
+let beginQuestioning;
 
 beginButton.addEventListener("click", beginGame);
+nextButton.addEventListener("click", () => {
+    beginQuestioning++;
+    setNextQuestion();
+});
 
 function beginGame() {
-    console.log("beginButton") /* confirms game begins */
+    console.log("beginButton"); /* confirms game begins */
     beginButton.classList.add("hide"); /* removes begin button */
     questionSection.classList.remove("hide"); /* displays questions */
     randomPickOfQuestion = questions.sort(() => Math.random() - .5); 
     beginQuestioning = 0 /* starting questions */
-    setNextQuestion()
+    setNextQuestion();
 }
 
 function setNextQuestion() {
-    pullQuestion(randomPickOfQuestion[beginQuestioning])
+    resetState();
+    pullQuestion(randomPickOfQuestion[beginQuestioning]);
 }
 
-function pullQuestion(question) { 
-    questionElement.innerText = question.question
+function pullQuestion(question) { /* insert test question */
+    questionElement.innerText = question.question;
+    question.answers.forEach(answer => {
+        const button = document.createElement("button"); /* creates button */
+        button.innerText = answer.text; /* pulling text --> button from below questions */
+        button.classList.add("btn-secondary"); /* adding answer buttons */
+        if(answer.correct) {
+            button.dataset.correct = answer.correct;
+        }
+        button.addEventListener("click", selectAnswer);
+        answerButtonsElement.appendChild(button); /* adds button */
+    })
 } 
 
-function selectAnswer() {
+function resetState() {
+    nextButton.classList.add("hide")
+    while (answerButtonsElement.firstChild) {
+        answerButtonsElement.removeChild(answerButtonsElement.firstChild);
+    }
+}
 
+function selectAnswer(e) {
+    const selectedButton = e.target;
+    const correct = selectedButton.dataset.correct;
+    setStatusClass(document.body, correct);
+    Array.from(answerButtonsElement.children).forEach(button => {
+        setStatusClass(button, button.dataset.correct);
+    })
+    if (randomPickOfQuestion.length > beginQuestioning + 1) {
+        nextButton.classList.remove("hide");
+    } else {
+        beginButton.innerText = "Restart";
+        beginButton.classList.remove("hide");
+    }
+}
+
+function setStatusClass(element, correct) {
+    clearStatusClass(element);
+    if (correct) {
+        element.classList.add("correct");
+    } else {
+        element.classList.add("wrong");
+    }
+}
+
+function clearStatusClass(element) {
+    element.classList.remove("correct");
+    element.classList.remove("wrong");
 }
 
 const questions = [
@@ -36,7 +85,7 @@ const questions = [
             { text: "Peter Winston", correct: false },
             { text: "Michelle Bury", correct: false }
         ]
-    } /*,
+    } ,
     {question: "In coding, HTML stands for?",
         answers: [
             { text: "Hamburger, Tomato, Mayo, and Lettuce", correct: false },
@@ -68,5 +117,5 @@ const questions = [
             { text: "Not important", correct: false },
             { text: "Something you can eat", correct: false }
         ]
-    } */
+    } 
 ]
