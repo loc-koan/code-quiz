@@ -23,7 +23,7 @@ function beginGame() {
 }
 
 function setNextQuestion() {
-    resetState();
+    cleanButton();
     pullQuestion(randomPickOfQuestion[beginQuestioning]);
 }
 
@@ -41,7 +41,7 @@ function pullQuestion(question) { /* insert test question */
     })
 } 
 
-function resetState() {
+function cleanButton() {
     nextButton.classList.add("hide")
     while (answerButtonsElement.firstChild) {
         answerButtonsElement.removeChild(answerButtonsElement.firstChild);

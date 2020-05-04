@@ -6,8 +6,8 @@
 
 body {
     display: flex; /* easier to use than float or positioning */
-    padding: 10;
-    margin: 10;
+    padding: 10px;
+    margin: 10px;
     width: 100vw;
     height: 100vh;
     justify-content: center;
@@ -18,8 +18,8 @@ body {
 .container {
     display: flex;
     grid-template-columns: repeat(1, auto);
-    padding: 10;
-    margin: 10;
+    padding: 10px;
+    margin: 10px;
     width: 50vw;
     height: 50vh;
     justify-content: center;
@@ -32,8 +32,8 @@ body {
     grid-template-columns: repeat(1, auto);
     grid-gap: 10px;
     gap: 10px;
-    padding: 10;
-    margin: 10;
+    padding: 10px;
+    margin: 10px;
     justify-content: center;
     align-items: center;
     background-color: white;
@@ -43,8 +43,8 @@ body {
     display: grid;
     grid-template-columns: repeat(1, auto);
     grid-gap: 10px;
-    padding: 10;
-    margin: 10;
+    padding: 10px;
+    margin: 10px;
     justify-content: center;
     align-items: center;
     background-color: white;
