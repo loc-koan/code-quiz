@@ -110,6 +110,10 @@ function selectAnswer(e) {
     }
 }
 
+// make another Array of answers
+// push answers into Array
+// store this array
+
 function setStatusClass(element, correct) {
     clearStatusClass(element);
     if (correct) {
@@ -180,3 +184,5 @@ xxxxxQuestion3.textContent = lastxxxxx.Question3Answer;
 xxxxxQuestion4.textContent = lastxxxxx.Question4Answer;
 xxxxxQuestion5.textContent = lastxxxxx.Question5Answer;
 */ 
+
+// time 
